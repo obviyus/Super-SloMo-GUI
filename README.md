@@ -1,5 +1,5 @@
 # Super-SloMo-GUI
-Super-SloMo-GUI is a fork of [avinashpaliwal/Super-SloMo](https://github.com/ avinashpaliwal/Super-SloMo) with [Gooey](https://github.com/chriskiehl/Gooey) thrown on it. The goal is to make it as easy as possible for a layman to use the video-coverter script.
+Super-SloMo-GUI is a fork of [avinashpaliwal/Super-SloMo](https://github.com/avinashpaliwal/Super-SloMo) with [Gooey](https://github.com/chriskiehl/Gooey) thrown on it. The goal is to make it as easy as possible for a layman to use the video-coverter script.
 
 # Super-SloMo [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 PyTorch implementation of "Super SloMo: High Quality Estimation of Multiple Intermediate Frames for Video Interpolation" by Jiang H., Sun D., Jampani V., Yang M., Learned-Miller E. and Kautz J. [[Project]](https://people.cs.umass.edu/~hzjiang/projects/superslomo/) [[Paper]](https://arxiv.org/abs/1712.00080)
@@ -21,5 +21,5 @@ Results on UCF101 dataset using the [evaluation script](https://people.cs.umass.
 <img src='./misc/slomo.gif'>
 
 ## References:
-The original code is forked from [avinashpaliwal/Super-SloMo](https://github.com/ avinashpaliwal/Super-SloMo)
+The original code is forked from [avinashpaliwal/Super-SloMo](https://github.com/avinashpaliwal/Super-SloMo)
 
