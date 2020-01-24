@@ -11,17 +11,7 @@ import model
 import dataloader
 import platform
 from tqdm import tqdm
-
-# For parsing commandline arguments
-parser = argparse.ArgumentParser()
-parser.add_argument("--ffmpeg_dir", type=str, default="", help='path to ffmpeg.exe')
-parser.add_argument("--video", type=str, required=True, help='path of video to be converted')
-parser.add_argument("--checkpoint", type=str, required=True, help='path of checkpoint for pretrained model')
-parser.add_argument("--fps", type=float, default=30, help='specify fps of output video. Default: 30.')
-parser.add_argument("--sf", type=int, required=True, help='specify the slomo factor N. This will increase the frames by Nx. Example sf=2 ==> 2x frames')
-parser.add_argument("--batch_size", type=int, default=1, help='Specify batch size for faster conversion. This will depend on your cpu/gpu memory. Default: 1')
-parser.add_argument("--output", type=str, default="output.mkv", help='Specify output file name. Default: output.mp4')
-args = parser.parse_args()
+from gooey import GooeyParser, Gooey
 
 def check():
     """
@@ -82,8 +72,20 @@ def create_video(dir):
         error = "Error creating output video. Exiting."
     return error
 
-
+@Gooey
 def main():
+    # For parsing commandline arguments
+    # Added Gooey to make the script more user friendly
+    parser = GooeyParser(description="Convert any video into Super-SloMo using hgih quality frame estimation for interpolation")
+    parser.add_argument("--ffmpeg_dir", type=str, help='path to ffmpeg.exe', widget='DirChooser')
+    parser.add_argument("--video", type=str, help='path of video to be converted', widget='FileChooser')
+    parser.add_argument("--checkpoint", type=str, help='path of checkpoint for pretrained model', widget='FileChooser')
+    parser.add_argument("--fps", type=float, default=30, help='specify fps of output video. Default: 30.')
+    parser.add_argument("--sf", type=int, help='specify the slomo factor N. This will increase the frames by Nx. Example sf=2 ==> 2x frames')
+    parser.add_argument("--batch_size", type=int, default=1, help='Specify batch size for faster conversion. This will depend on your cpu/gpu memory. Default: 1')
+    parser.add_argument("--output", type=str, default="output.mkv", help='Specify output file name. Default: output.mp4', widget='FileSaver')
+    global args 
+    args = parser.parse_args()
     # Check if arguments are okay
     error = check()
     if error:
